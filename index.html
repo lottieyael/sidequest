@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Find, save, and play your favorite daily puzzles and browser games.">
+  <title>Sidequest — Puzzle Directory</title>
+  <link rel="icon" href="./favicon.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body id="top">
+  <header class="masthead shell">
+    <div class="masthead-title">
+      <h1><a href="./">Sidequest<span>.</span></a></h1>
+      <p>Daily puzzles and browser games</p>
+    </div>
+    <button type="button" class="shuffle" id="shuffle">Random game</button>
+  </header>
+
+  <main class="shell layout">
+    <aside class="sidebar">
+      <nav class="views" aria-label="Browse or view bookmarks">
+        <button type="button" class="index-button" data-view="all" aria-pressed="true">All games</button>
+        <button type="button" class="index-button" data-view="saved" aria-pressed="false">Bookmarks<span class="tally" id="saved-count" aria-hidden="true"></span></button>
+      </nav>
+      <div class="desktop-categories">
+        <h2 class="sidebar-title" id="category-title">Categories</h2>
+        <div id="categories" role="group" aria-labelledby="category-title"></div>
+      </div>
+    </aside>
+
+    <section class="catalog" id="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-bar">
+        <div class="catalog-heading">
+          <h2 id="catalog-title" tabindex="-1">All games</h2>
+          <p id="result-count" role="status" aria-live="polite"></p>
+        </div>
+        <div class="search">
+          <input id="search" type="search" placeholder="Search games" aria-label="Search games" autocomplete="off">
+          <kbd aria-hidden="true">/</kbd>
+        </div>
+        <div class="mobile-categories">
+          <label for="category-select">Category</label>
+          <div class="select-wrap"><select id="category-select"></select></div>
+        </div>
+      </div>
+      <div class="list-header row" id="list-header" aria-hidden="true">
+        <span>Game</span><span>The challenge</span><span>Category</span><span></span>
+      </div>
+      <ul id="games" class="games" role="list"></ul>
+      <div id="empty" class="empty" hidden>
+        <p id="empty-message"></p>
+        <button type="button" id="reset">Show all games</button>
+      </div>
+      <noscript>Enable JavaScript to browse the game directory.</noscript>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <span>Game links open in a new tab.</span>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <template id="game-template">
+    <li class="game row">
+      <div class="game-title">
+        <h3><a class="game-link" target="_blank" rel="noopener noreferrer"></a></h3>
+        <span class="game-note" hidden></span>
+      </div>
+      <p class="game-description"></p>
+      <span class="game-category"></span>
+      <button class="save" type="button" aria-pressed="false"><span class="bookmark" aria-hidden="true"></span></button>
+    </li>
+  </template>
+</body>
+</html>
